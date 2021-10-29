@@ -1,5 +1,5 @@
 import * as serviceWorker from './serviceWorker';
-import React from 'react';
+import React, {FC} from 'react'
 import ReactDOM from 'react-dom';
 import './index.sass';
 import {MainJSApp} from './App'
@@ -9,10 +9,20 @@ import {MainJSApp} from './App'
 //     store.dispatch({type: 'FAKE'})
 // }, 1000)
 
+export const Test: FC = () => {
+  return(
+    <div>
+      test
+    </div>
+  )
+}
+
 ReactDOM.render(
     <MainJSApp/>,
     document.getElementById('root')
 );
+
+
 
 
 // If you want your app to work offline and load faster, you can change

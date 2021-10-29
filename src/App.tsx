@@ -1,4 +1,4 @@
-import React, {ComponentType, FC, Suspense} from 'react'
+import React, {ComponentType, createContext, FC, Suspense} from 'react'
 import './App.sass'
 import Footer from './components/Footer/Footer'
 import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom'
@@ -46,7 +46,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
   }
 
   componentWillUnmount() {
-    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors)
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
   }
 
   render() {
@@ -61,14 +61,14 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
             <Navbar/>
             <Suspense fallback={<Preloader/>}>
               <Switch>
-                <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
-                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                <Route path='/login' render={() => <LoginPage/>}/>
-                <Route path='/music' render={() => <MusicContainer/>}/>
-                <Route path='/news' render={() => <News/>}/>
-                <Route path='/users' render={() => <UsersPage/>}/>
-                <Route path='/setting' render={() => <Setting/>}/>
-                <Route path='/chat' render={() => <ChatPage/>}/>
+                <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                <Route path="/login" render={() => <LoginPage/>}/>
+                <Route path="/music" render={() => <MusicContainer/>}/>
+                <Route path="/news" render={() => <News/>}/>
+                <Route path="/users" render={() => <UsersPage/>}/>
+                <Route path="/setting" render={() => <Setting/>}/>
+                <Route path="/chat" render={() => <ChatPage/>}/>
                 <Redirect from="/" to="/profile"/>
                 {/*<Route path='*' render={() => <h3>404 - Not found</h3>}/>*/}
               </Switch>

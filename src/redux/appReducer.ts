@@ -1,11 +1,11 @@
-import {getAuthUserData} from "./authReducer";
-import {ThunkAction} from "redux-thunk";
-import {AppStateType, InferActionsTypes} from "./redux-store";
+import {getAuthUserData} from './authReducer'
+import {ThunkAction} from 'redux-thunk'
+import {AppStateType, InferActionsTypes} from './redux-store'
 
 
 let initialState = {
   initialized: false
-};
+}
 
 
 const appReducer = (state = initialState, action: ActionTypes): InitialStateType => {
@@ -14,7 +14,7 @@ const appReducer = (state = initialState, action: ActionTypes): InitialStateType
       return {
         ...state,
         initialized: true
-      };
+      }
     default:
       return state
   }
@@ -30,7 +30,7 @@ export const initializeApp = (): ThunkAction<void, AppStateType, unknown, Action
   Promise.all([promise])
     .then(() => {
       dispatch(actions.initializeSuccess())
-    });
+    })
 }
 
 

@@ -45,7 +45,6 @@ const AddNewPostForm: FC<FormPropsTypes> = ({onSubmit}) => {
             <CustomTextarea name="post"
                             placeholder="new post..."
                             className={style.news}
-
             />
 
             <Button

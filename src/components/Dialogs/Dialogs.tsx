@@ -1,12 +1,9 @@
 import React, {FC} from 'react'
 import style from './Dialogs.module.sass'
-import DialogItem from './Dialogitem/DialogItem'
 import {Chat} from './Chat/Chat'
 import AddMessageFormik from './AddMessage/AddMessageFormik'
-import {useDispatch, useSelector} from 'react-redux'
-import {AppStateType} from '../../redux/redux-store'
-import {actions} from '../../redux/messageReducer'
 import {ChatsType, DialogsType} from '../../types/types'
+import {DialogItem} from './Dialogitem/DialogItem'
 
 
 type PropsType = {
