@@ -2,18 +2,17 @@ import React from 'react';
 import style from './Footer.module.sass'
 
 
-
 const Footer = () => {
     return (
-        <footer className={style.footer}>
-            <div className={style.clock}>
-                <Clock/>
-                {/*<Counter/>*/}
-                {/*<Toggle/>*/}
-                {/*<Page/>*/}
-                {/*<FlavorForm/>*/}
-            </div>
-        </footer>
+       <footer className={style.footer}>
+           <div className={style.clock}>
+               <Clock/>
+               {/*<Counter/>*/}
+               {/*<Toggle/>*/}
+               {/*<Page/>*/}
+               {/*<FlavorForm/>*/}
+           </div>
+       </footer>
     )
 }
 
@@ -25,8 +24,7 @@ class Clock extends React.Component {
 
     componentDidMount() {
         this.timerID = setInterval(
-            () => this.tick(),
-            1000
+           () => this.tick(), 1000
         );
     }
 
@@ -42,9 +40,9 @@ class Clock extends React.Component {
 
     render() {
         return (
-            <div>
-                <h5>{this.state.date.toLocaleTimeString()}</h5>
-            </div>
+           <div>
+               <h4>{this.state.date.toLocaleTimeString()}</h4>
+           </div>
         );
     }
 }
@@ -158,7 +156,6 @@ class Clock extends React.Component {
 // }
 
 
-
 //
 // class FlavorForm extends React.Component {
 //     constructor(props) {
@@ -235,9 +232,5 @@ class Clock extends React.Component {
 //     );
 //   }
 // }
-
-
-
-
 
 export default Footer;

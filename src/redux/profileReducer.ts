@@ -1,39 +1,43 @@
-import {FormAction, stopSubmit} from "redux-form";
-import {getAvatar} from "./authReducer";
-import {PhotosType, PostType, ProfileType} from "../types/types";
-import {BaseThunkType, InferActionsTypes} from "./redux-store";
-import {usersAPI} from "../api/users-api";
-import {profileAPI} from "../api/profile-api";
-import {ResultCodesEnum} from "../api/api";
+import {FormAction, stopSubmit} from 'redux-form'
+import {getAvatar} from './authReducer'
+import {PhotosType, PostType, ProfileType} from '../types/types'
+import {BaseThunkType, InferActionsTypes} from './redux-store'
+import {usersAPI} from '../api/users-api'
+import {profileAPI} from '../api/profile-api'
+import {ResultCodesEnum} from '../api/api'
 
 
 let initialState = {
   posts: [
-    {id: 1, message: 'My React JS.', likesCount: 777},
+    {
+      id: 1,
+      message: `My tech stack: HTML, CSS, JS, React JS, Git, Ajax, Module CSS, Styled Components, TypeScript.`,
+      likesCount: 777
+    },
   ] as Array<PostType>,
   profile: null as ProfileType | null,
   status: '',
   followed: null as boolean | null
-};
+}
 
 const profileReducer = (state = initialState, action: ActionTypes): InitialStateType => {
   switch (action.type) {
-    case "my-react/profile/ADD_POST":
+    case 'my-react/profile/ADD_POST':
       let newPost = {
         id: state.posts.length + 1,
         message: action.newPostBody,
         likesCount: 0
-      };
+      }
       return {
         ...state,
         posts: [...state.posts, newPost]
-      };
-    case "my-react/profile/DELETE_POST":
+      }
+    case 'my-react/profile/DELETE_POST':
       return {
         ...state,
         posts: state.posts.filter(p => p.id !== action.postsId)
-      };
-    case "my-react/profile/ADD_LIKE":
+      }
+    case 'my-react/profile/ADD_LIKE':
       return {
         ...state,
         posts: state.posts.map(p => {
@@ -42,24 +46,24 @@ const profileReducer = (state = initialState, action: ActionTypes): InitialState
           }
           return p
         })
-      };
-    case "my-react/profile/SET_USER_PROFILE":
-      return {...state, profile: action.profile};
-    case "my-react/profile/SAVE_PHOTO_SUCCESS":
+      }
+    case 'my-react/profile/SET_USER_PROFILE':
+      return {...state, profile: action.profile}
+    case 'my-react/profile/SAVE_PHOTO_SUCCESS':
       return {
         ...state,
         profile: {
           ...state.profile,
           photos: action.photos
         } as ProfileType
-      };
-    case "my-react/profile/SET_STATUS":
-      return {...state, status: action.status};
-    case "my-react/profile/SET_SUBSCRIBED":
-      return {...state, followed: action.followed};
+      }
+    case 'my-react/profile/SET_STATUS':
+      return {...state, status: action.status}
+    case 'my-react/profile/SET_SUBSCRIBED':
+      return {...state, followed: action.followed}
 
     default:
-      return state;
+      return state
   }
 }
 // Actions Creators
@@ -82,8 +86,8 @@ export const getProfile = (userId: number): ThunkType => {
 }
 export const getStatus = (userId: number): ThunkType => {
   return async (dispatch) => {
-    const data = await profileAPI.getStatus(userId);
-    dispatch(actionsProfile.setStatus(data));
+    const data = await profileAPI.getStatus(userId)
+    dispatch(actionsProfile.setStatus(data))
   }
 }
 export const requestFollowed = (userId: number | null): ThunkType => {
@@ -95,7 +99,7 @@ export const requestFollowed = (userId: number | null): ThunkType => {
 export const updateStatus = (status: string): ThunkType => {
   return async (dispatch) => {
     try {
-      const data = await profileAPI.updateStatus(status);
+      const data = await profileAPI.updateStatus(status)
       if (data.resultCode === ResultCodesEnum.Success) {
         dispatch(actionsProfile.setStatus(status))
       }
@@ -106,13 +110,13 @@ export const updateStatus = (status: string): ThunkType => {
 }
 export const updateDataProfile = (profile: ProfileType): ThunkType => {
   return async (dispatch, getState) => {
-    const userId = getState().authReducer.userId;
-    const data = await profileAPI.updateDataProfile(profile);
+    const userId = getState().authReducer.userId
+    const data = await profileAPI.updateDataProfile(profile)
     if (data.resultCode === ResultCodesEnum.Success) {
       if (userId != null) {
         await dispatch(getProfile(userId))
       } else {
-        throw new Error("userId can't be null")
+        throw new Error('userId can\'t be null')
       }
 
 
@@ -121,11 +125,11 @@ export const updateDataProfile = (profile: ProfileType): ThunkType => {
     } else {
       let message = data.messages.length > 0
         ? data.messages[0]
-        : "Some error";
+        : 'Some error'
 
-      let regExp = /(?<=\>)\w+(?=\))/g;
-      let errorTitle = String(message.match(regExp)).toLowerCase();
-      dispatch(stopSubmit('profileForm', {"contacts": {[errorTitle]: "Invalid URL"}}));
+      let regExp = /(?<=\>)\w+(?=\))/g
+      let errorTitle = String(message.match(regExp)).toLowerCase()
+      dispatch(stopSubmit('profileForm', {'contacts': {[errorTitle]: 'Invalid URL'}}))
       return Promise.reject(message)
     }
   }

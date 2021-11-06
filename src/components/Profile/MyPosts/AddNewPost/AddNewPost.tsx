@@ -14,7 +14,7 @@ type FormPropsTypes = {
 }
 
 const pressEnter = (e: any) => {
-  if (e.keyCode == 13) {
+  if (e.keyCode === 13) {
 
   }
   return true
