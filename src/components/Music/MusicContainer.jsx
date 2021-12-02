@@ -71,7 +71,7 @@ const SearchForm = reduxForm({form: 'search'})(SearchReduxForm)
 
 class MusicContainer extends React.Component {
    componentDidMount() {
-      // this.props.getTracks();
+      this.props.getTracks();
    }
 
    onSubmit = (values) => {
@@ -87,7 +87,9 @@ class MusicContainer extends React.Component {
                      <SearchForm onSubmit={this.onSubmit}/>
                   </div>
                   <div className={s.wrappTracks}>
-                     {this.props.radioChannel.map(r =>
+                     {!this.props.radioChannel
+                        ? <Preloader/>
+                        : this.props.radioChannel.map(r =>
                         <div key={r.id} className={s.track}>
                            <div>
                               <a href={r.link}>PLAY</a>

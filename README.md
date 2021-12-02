@@ -1,9 +1,8 @@
-## My React Project
+## Social Network
 
-Social Network
+####Для обзора приложения Вы можете клонировать репозиторий [*здесь &rarr;*](https://github.com/tsverkunov/Social-Network_SPA.git "ссылка на проект")
 
-#### Account for testing: 
+И воспользоваться тестовыми:  
 
-Email: free@samuraijs.com
-
-Password: free
+Email: ```free@samuraijs.com```  
+Password: ```free```

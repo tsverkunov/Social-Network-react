@@ -45,7 +45,6 @@ type PropsType = StatePropsType & StateDispatchType & RouteComponentProps<PathPa
 class ProfileContainer extends React.PureComponent<PropsType> {
   profileRefresh() {
     let userId: number | null = +this.props.match.params.userId
-
     if (!userId) {
       userId = this.props.authorizedUserId
       if (!userId) {

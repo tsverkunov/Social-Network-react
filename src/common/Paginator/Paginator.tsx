@@ -44,7 +44,7 @@ let Paginator: React.FC<PropsType> = ({
                        className={cn(style.page, {
                          [style.changePage]: currentPage === p
                        })
-                       }
+                       } 
                        onClick={(e) => {
                          onPageChanged(p)
                        }}>{p}</span>
