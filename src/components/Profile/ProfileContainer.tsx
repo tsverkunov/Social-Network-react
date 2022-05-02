@@ -117,7 +117,7 @@ let mapStateToProps = (state: AppStateType) => {
   })
 }
 
-export default compose<ComponentType>(
+export default compose<any>(
   connect(mapStateToProps,
     {
       getProfile,
