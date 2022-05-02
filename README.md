@@ -1,9 +1,9 @@
 #### EN
 ## Social Network
 ### Social Network for Web-Developers
-##### For an overview of the application, you can clone the repository [*here &rarr;*](https://social-network-006.web.app/ "link to project")
+##### Link to project [*here &rarr;*](https://social-network-006.web.app/ "link to project")
 
-And use the test:
+Test account:
 
 Email: ```free@samuraijs.com```  
 Password: ```free```
@@ -14,9 +14,8 @@ Password: ```free```
 ## Social Network
 ### Социальная сеть для Веб-разработчиков.
 
-##### Для обзора приложения Вы можете клонировать репозиторий [*здесь &rarr;*](https://github.com/tsverkunov/Social-Network_SPA.git "ссылка на проект")
+##### Ссылка на проект [*здесь &rarr;*](https://social-network-006.web.app/t "ссылка на проект")
 
-И воспользоваться тестовыми:  
-
+Тестовый аккаунт:
 Email: ```free@samuraijs.com```  
 Password: ```free```
