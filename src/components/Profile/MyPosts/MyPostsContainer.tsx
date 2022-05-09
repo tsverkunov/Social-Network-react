@@ -4,18 +4,18 @@ import {connect} from 'react-redux'
 import {AppStateType} from '../../../redux/redux-store'
 import {getPosts} from '../../../redux/usersSelectors'
 
-const mapStateToProps= (state: AppStateType) => {
-    return {
-        posts: getPosts(state)
-    }
+const mapStateToProps = (state: AppStateType) => {
+  return {
+    posts: getPosts(state)
+  }
 }
 
 export const MyPostContainer =
-    connect<PropsType, DispatchPropsType, {}, AppStateType>(mapStateToProps,
-      {
-          addPost: actionsProfile.addPost,
-          addLike: actionsProfile.addLike
-      }
-)(MyPostsMemorized)
+  connect<PropsType, DispatchPropsType, {}, AppStateType>(mapStateToProps,
+    {
+      addPost: actionsProfile.addPost,
+      addLike: actionsProfile.addLike
+    }
+  )(MyPostsMemorized)
 
 export default MyPostContainer

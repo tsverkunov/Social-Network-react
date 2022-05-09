@@ -30,7 +30,6 @@ const Messages: React.FC = () => {
     wsChanel.addEventListener('message', (e: MessageEvent) => {
       let newMessages = JSON.parse(e.data)
       setMessages((prevMessages) => [...prevMessages, ...newMessages])
-      // console.log(e)
     })
   }, [])
 
@@ -41,7 +40,7 @@ const Messages: React.FC = () => {
 
 const Message: React.FC<{ message: ChatMessageType }> = ({message}) => {
   return <div>
-    <img src={message.photo} alt='' style={{width: '40px'}}/> <b>{message.userId}</b>
+    <img src={message.photo} alt="" style={{width: '40px'}}/> <b>{message.userId}</b>
     <br/>
     {message.message}
     <hr/>

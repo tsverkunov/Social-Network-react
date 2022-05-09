@@ -2,7 +2,6 @@ import React, {ChangeEvent, FC, useState} from 'react'
 import style from '../Description/Description.module.sass'
 import userIcon from '../../../common/img/users_icon.png'
 import camera from '../../../common/img/photo-camera.svg'
-import minusIcon from '../../../common/img/minus_icon.png'
 import {ProfileType} from '../../../types/types'
 
 type PropsType = {
@@ -13,7 +12,6 @@ type PropsType = {
   follow: (userId: number) => void
   unfollow: (userId: number) => void
   followed: boolean | null
-
 }
 
 const ProfileAvatar: FC<PropsType> = ({
@@ -41,42 +39,44 @@ const ProfileAvatar: FC<PropsType> = ({
     onMainPhotoSelected(e)
   }
   if (followed) {
-    button = <button disabled={followingInProgress.some(id => id === profile.userId)}
-                     className={style.unSub}
-                     onClick={() => {
-                       unfollow(profile.userId)
-                     }}>SUBSCRIBED</button>
+    button = <button
+      disabled={followingInProgress.some(id => id === profile.userId)}
+      className={style.unSub}
+      onClick={() => unfollow(profile.userId)}
+    >
+      SUBSCRIBED
+    </button>
   } else {
-    button = <button disabled={followingInProgress.some(id => id === profile.userId)}
-                     className={style.sub}
-                     onClick={() => {
-                       follow(profile.userId)
-                     }}>SUBSCRIBE</button>
+    button = <button
+      disabled={followingInProgress.some(id => id === profile.userId)}
+      className={style.sub}
+      onClick={() => follow(profile.userId)}
+    >
+      SUBSCRIBE
+    </button>
   }
 
   return (
     <div className={style.avatarItem}>
-      <img alt=''
-           className={style.avatar}
-           onMouseEnter={editDisplayBlock}
-           onMouseLeave={editDisplayNone}
-           onDoubleClick={toggleEditMode}
-           src={profile.photos.large || userIcon}
+      <img
+        alt=""
+        className={style.avatar}
+        onMouseEnter={editDisplayBlock}
+        onMouseLeave={editDisplayNone}
+        onDoubleClick={toggleEditMode}
+        src={profile.photos.large || userIcon}
       />
       {!isOwner && button}
-      {/*{!isOwner && <button disabled={followingInProgress.some(id => id === profile.userId)}*/}
-      {/*        onClick={1 ? unfollow : follow}>*/}
-      {/*   {1 ? "SUBSCRIBED" : "SUBSCRIBE"}*/}
-      {/*</button>}*/}
       {
         isOwner && (editMode
           ?
           <div className={style.wrappIcon} style={{display: editDisplay}}>
-            <img className={style.plusIcon}
-                 onClick={toggleEditMode}
-                 onMouseEnter={editDisplayBlock}
-                 src={camera}
-                 alt=""
+            <img
+              className={style.plusIcon}
+              onClick={toggleEditMode}
+              onMouseEnter={editDisplayBlock}
+              src={camera}
+              alt=""
             />
           </div>
           :

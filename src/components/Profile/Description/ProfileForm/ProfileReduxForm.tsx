@@ -13,21 +13,23 @@ const ProfileDataForm: FC<InjectedFormProps<ProfileType, PropsType> & PropsType>
     <form onSubmit={handleSubmit} className={style.profileForm}>
       <div>
         <p>Name:</p>
-        <Field type="text"
-               placeholder="fullName"
-               name="fullName"
-               component={Input}
+        <Field
+          type="text"
+          placeholder="fullName"
+          name="fullName"
+          component={Input}
         />
       </div>
       <div>
         <p>About me:</p>
         <div>
-          <Field type="text"
-                 placeholder="aboutMe"
-                 name="aboutMe"
-                 component={'textarea'}
-                 rows="4"
-                 cols="50"
+          <Field
+            type="text"
+            placeholder="aboutMe"
+            name="aboutMe"
+            component={'textarea'}
+            rows="4"
+            cols="50"
           />
         </div>
       </div>
@@ -35,32 +37,35 @@ const ProfileDataForm: FC<InjectedFormProps<ProfileType, PropsType> & PropsType>
       <div>
         <p>My skills:</p>
         <div>
-          <Field type="text"
-                 placeholder="job"
-                 name="lookingForAJobDescription"
-                 component={'textarea'}
-                 rows="4"
-                 cols="50"
+          <Field
+            type="text"
+            placeholder="job"
+            name="lookingForAJobDescription"
+            component={'textarea'}
+            rows="4"
+            cols="50"
           />
         </div>
       </div>
       <div>
-        <Field type="checkbox"
-               name="lookingForAJob"
-               component={'input'}
+        <Field
+          type="checkbox"
+          name="lookingForAJob"
+          component={'input'}
         />
         <div>
           <span>looking for a job</span>
-      </div>
+        </div>
       </div>
       <div>
         <p>Contacts:</p>
         {Object.keys(profile.contacts).map(key => {
           return <div className={style.contact} key={key}>
             <span>{key} :</span>
-            <Field type="text"
-                   name={'contacts.' + key}
-                   component={Input}
+            <Field
+              type="text"
+              name={'contacts.' + key}
+              component={Input}
             />
           </div>
         })}
@@ -73,7 +78,7 @@ const ProfileDataForm: FC<InjectedFormProps<ProfileType, PropsType> & PropsType>
                    <span>
                       {error}
                    </span>
-        </div>
+         </div>
       }
     </form>
   )

@@ -7,7 +7,6 @@ import {UserImg} from '../../common/SVGComponents/UserImg'
 import {MessagesImg} from '../../common/SVGComponents/MessagesImg'
 import {UsersImg} from '../../common/SVGComponents/UsersImg'
 import {MyMusicImg} from '../../common/SVGComponents/MyMusicImg'
-import {NewsImg} from '../../common/SVGComponents/NewsImg'
 
 
 type PropsType = {}
@@ -33,12 +32,12 @@ const Navbar: FC<PropsType> = () => {
           <span>My Music</span>
         </NavLink>
       </div>
-      <div className={style.item}>
-        <NavLink to="/news" className={style.link} activeClassName={style.active}>
-          <NewsImg/>
-          <span>News</span>
-        </NavLink>
-      </div>
+      {/*<div className={style.item}>*/}
+      {/*  <NavLink to="/news" className={style.link} activeClassName={style.active}>*/}
+      {/*    <NewsImg/>*/}
+      {/*    <span>News</span>*/}
+      {/*  </NavLink>*/}
+      {/*</div>*/}
       <div className={style.item}>
         <NavLink to="/users" className={style.link} activeClassName={style.active}>
           <UsersImg/>

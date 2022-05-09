@@ -18,8 +18,6 @@ import {
 import {User} from './User/User'
 import {useHistory} from 'react-router'
 import * as queryString from 'querystring'
-import {Pagination} from 'antd'
-
 
 
 type PropsType = {}
@@ -94,36 +92,30 @@ export const Users: FC<PropsType> = React.memo(() => {
 
 
 // for Pagination
-  let pagesCount = Math.ceil(totalUserCount / pageSize);
-  //-----
-
+  let pagesCount = Math.ceil(totalUserCount / pageSize)
 
   return (
     <div className={style.wrapper}>
       <div>
         <UserSearchForm onFilterChanged={onFilterChanged}/>
       </div>
-
-      {/*<Pagination count={pagesCount} variant="outlined" shape="rounded" />*/}
-
-      {/*<Pagination defaultCurrent={6} total={500} />*/}
-
-
-      <Paginator totalItemsCount={totalUserCount}
-                 pageSize={pageSize}
-                 currentPage={currentPage}
-                 onPageChanged={onPageChanged}
+      <Paginator
+        totalItemsCount={totalUserCount}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChanged={onPageChanged}
       />
       {isFetching
         ? <Preloader/>
         : <div className={style.wrapperContent}>
           {users.map(u =>
-            <User followingInProgress={followingInProgress}
-                  follow={followUsers}
-                  unfollow={unfollowUsers}
-                  isOwner={isOwner}
-                  user={u}
-                  key={u.id}
+            <User
+              followingInProgress={followingInProgress}
+              follow={followUsers}
+              unfollow={unfollowUsers}
+              isOwner={isOwner}
+              user={u}
+              key={u.id}
             />
           )}
         </div>}

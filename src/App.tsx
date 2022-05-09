@@ -1,4 +1,4 @@
-import React, {ComponentType, createContext, FC, Suspense} from 'react'
+import React, {FC, Suspense} from 'react'
 import './App.sass'
 import Footer from './components/Footer/Footer'
 import {BrowserRouter, Redirect, Route, Switch, withRouter} from 'react-router-dom'
@@ -10,24 +10,15 @@ import MusicContainer from './components/Music/MusicContainer'
 import store, {AppStateType} from './redux/redux-store'
 import Preloader from './common/Preloader/Preloader'
 import Setting from './components/Setting/Setting'
-import News from './components/News/News'
 import {Header} from './components/Header/Header'
 import Navbar from './components/Navbar/Navbar'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import {LoginPage} from './components/Login/LoginPage'
 import {UsersPage} from './components/Users/UsersContainer'
-import {Dialogs} from './components/Dialogs/Dialogs'
-// import {ChatPage} from './pages/ChatPage/ChatPage'
-// import 'antd/dist/antd.css'
 
 //Lazy-Loading
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ChatPage = React.lazy(() => import('./pages/ChatPage/ChatPage'))
-// const LoginPage = React.lazy(() => import("./components/Login/LoginPage"));
-// const News = React.lazy(() => import("./components/News/News"));
-// const Setting = React.lazy(() => import("./components/Setting/Setting"));
-// const MusicContainer = React.lazy(() => import("./components/Music/MusicContainer"));
-
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispatchPropsType = {
@@ -65,12 +56,11 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                 <Route path="/dialogs" render={() => <DialogsContainer/>}/>
                 <Route path="/login" render={() => <LoginPage/>}/>
                 <Route path="/music" render={() => <MusicContainer/>}/>
-                <Route path="/news" render={() => <News/>}/>
+                {/*<Route path="/news" render={() => <News/>}/>*/}
                 <Route path="/users" render={() => <UsersPage/>}/>
                 <Route path="/setting" render={() => <Setting/>}/>
                 <Route path="/chat" render={() => <ChatPage/>}/>
                 <Redirect from="/" to="/profile"/>
-                {/*<Route path='*' render={() => <h3>404 - Not found</h3>}/>*/}
               </Switch>
             </Suspense>
             <Footer/>
@@ -94,7 +84,6 @@ const AppContainer = compose<any>(
 export const MainJSApp: FC = () => {
   return (
     <React.StrictMode>
-      {/*<BrowserRouter basename={process.env.PUBLIC_URL} >*/}
       <BrowserRouter>
         <Provider store={store}>
           <AppContainer/>

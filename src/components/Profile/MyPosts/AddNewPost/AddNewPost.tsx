@@ -26,25 +26,26 @@ const AddNewPostForm: FC<FormPropsTypes> = ({onSubmit}) => {
   }
   return (
     <>
-      <Formik initialValues={initialValues}
-              validationSchema={Yup.object({
-                post: Yup.string()
-                  .max(150, 'Must be 150 characters or less'),
-              })
-              }
-              onSubmit={(values, {resetForm}) => {
-                setTimeout(() => {
-                  onSubmit(values)
-                  resetForm()
-                  // setSubmitting(false);
-                }, 300)
-              }}
+      <Formik
+        initialValues={initialValues}
+        validationSchema={Yup.object({
+          post: Yup.string()
+            .max(150, 'Must be 150 characters or less'),
+        })
+        }
+        onSubmit={(values, {resetForm}) => {
+          setTimeout(() => {
+            onSubmit(values)
+            resetForm()
+          }, 300)
+        }}
       >
         {props => (
           <Form className={style.newPost}>
-            <CustomTextarea name="post"
-                            placeholder="new post..."
-                            className={style.news}
+            <CustomTextarea
+              name="post"
+              placeholder="new post..."
+              className={style.news}
             />
 
             <Button
@@ -57,14 +58,6 @@ const AddNewPostForm: FC<FormPropsTypes> = ({onSubmit}) => {
             >
               {props.isSubmitting ? 'Sending...' : 'Send'}
             </Button>
-
-
-            {/*<button type="submit"*/}
-            {/*        disabled={props.isSubmitting}*/}
-            {/*        className={style.buttonSend}*/}
-            {/*>*/}
-            {/*  {props.isSubmitting ? 'Sending...' : 'Send'}*/}
-            {/*</button>*/}
           </Form>
         )}
       </Formik>

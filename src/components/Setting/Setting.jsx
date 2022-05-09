@@ -3,7 +3,7 @@ import style from './Setting.module.sass';
 import Clip from "../../common/video/Clip";
 
 import styled, {css} from 'styled-components'
-import { lighten } from 'polished'
+import {lighten} from 'polished'
 
 export const Button = styled.button`
   background: transparent;
@@ -14,9 +14,10 @@ export const Button = styled.button`
   padding: 0.25em 1em;
   cursor: pointer;
   transition: all .2s;
+
   &:active {
     transform: scale(.99);
-    background: ${lighten( 0.7, '#333')};
+    background: ${lighten(0.7, '#333')};
   }
 
   ${props => props.primary && css`

@@ -23,34 +23,35 @@ type PropsType = {
 }
 
 export const Profile: FC<PropsType> = ({
-                                  profile,
-                                  status,
-                                  updateStatus,
-                                  updateDataProfile,
-                                  isOwner,
-                                  savePhoto,
-                                  friends,
-                                  follow,
-                                  followingInProgress,
-                                  unfollow,
-                                  followed
-                                }) => {
+                                         profile,
+                                         status,
+                                         updateStatus,
+                                         updateDataProfile,
+                                         isOwner,
+                                         savePhoto,
+                                         friends,
+                                         follow,
+                                         followingInProgress,
+                                         unfollow,
+                                         followed
+                                       }) => {
   return (
     <>
       {!profile
         ? <Preloader/>
         : <div className={style.wrapperContent}>
-          <Description savePhoto={savePhoto}
-                       isOwner={isOwner}
-                       profile={profile}
-                       status={status}
-                       updateStatus={updateStatus}
-                       updateDataProfile={updateDataProfile}
-                       friends={friends}
-                       followingInProgress={followingInProgress}
-                       follow={follow}
-                       unfollow={unfollow}
-                       followed={followed}
+          <Description
+            savePhoto={savePhoto}
+            isOwner={isOwner}
+            profile={profile}
+            status={status}
+            updateStatus={updateStatus}
+            updateDataProfile={updateDataProfile}
+            friends={friends}
+            followingInProgress={followingInProgress}
+            follow={follow}
+            unfollow={unfollow}
+            followed={followed}
           />
           {isOwner && <MyPostsContainer/>}
         </div>

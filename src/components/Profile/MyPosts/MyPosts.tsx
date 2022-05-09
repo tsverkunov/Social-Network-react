@@ -16,11 +16,14 @@ const MyPosts: FC<PropsType & DispatchPropsType> = ({addLike, addPost, posts}) =
   let postElement =
     [...posts]
       .reverse()
-      .map(p => <Post addLike={addLike}
-                      message={p.message}
-                      likesCount={p.likesCount}
-                      id={p.id}
-                      key={p.id}/>)
+      .map(p => <Post
+          addLike={addLike}
+          message={p.message}
+          likesCount={p.likesCount}
+          id={p.id}
+          key={p.id}
+        />
+      )
   return (
     <div className={style.posts}>
       <div className={style.title}>
@@ -35,8 +38,3 @@ const MyPosts: FC<PropsType & DispatchPropsType> = ({addLike, addPost, posts}) =
 const MyPostsMemorized = React.memo(MyPosts)
 
 export default MyPostsMemorized
-
-// PureComponent
-// shouldComponentUpdate(nextProps, nextState, nextContext) {
-//    return nextProps != this.props || nextState != this.state;
-// }

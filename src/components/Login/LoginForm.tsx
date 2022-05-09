@@ -83,24 +83,18 @@ export const LoginForm: FC<FormPropsTypes> = React.memo(({captchaUrl, onSubmit, 
               </div>}
               {
                 errorMessage && <div className={style.formCommonError}>
-                  <span>{errorMessage}</span>
-                </div>
+                   <span>{errorMessage}</span>
+                 </div>
               }
               <div className={style.buttonItem}>
 
-                <Button color="primary"
-                        variant="contained"
-                        type="submit"
-                        disabled={isSubmitting}>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  type="submit"
+                  disabled={isSubmitting}>
                   {isSubmitting ? 'Loading...' : 'Login'}
                 </Button>
-
-
-                {/*<button type="submit"*/}
-                {/*        disabled={isSubmitting}*/}
-                {/*>*/}
-                {/*  {isSubmitting ? 'Loading...' : 'Login'}*/}
-                {/*</button>*/}
               </div>
             </Form>
           )

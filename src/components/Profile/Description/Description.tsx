@@ -22,11 +22,18 @@ type PropsType = {
 }
 
 const Description: FC<PropsType> = ({
-                                      profile, status, updateStatus, isOwner,
-                                      updateDataProfile, savePhoto,
-                                      followingInProgress, follow, unfollow, followed
+                                      profile,
+                                      status,
+                                      updateStatus,
+                                      isOwner,
+                                      updateDataProfile,
+                                      savePhoto,
+                                      followingInProgress,
+                                      follow,
+                                      unfollow,
+                                      followed
                                     }) => {
-  let [editMode, setEditMode] = useState(true)
+  const [editMode, setEditMode] = useState(true)
 
   const activateEditMode = () => {
     setEditMode(!editMode)
@@ -48,35 +55,37 @@ const Description: FC<PropsType> = ({
       <div className={style.descriptionWrap}>
         <div className={style.editIcon}>
           {isOwner &&
-          <EditIcon
-             // fontSize="default"
-             onClick={activateEditMode}/>}
-          {/*<img src={editIcon} alt="" onClick={activateEditMode}/>}*/}
+             <EditIcon
+                onClick={activateEditMode}/>}
         </div>
-        <ProfileAvatar onMainPhotoSelected={onMainPhotoSelected}
-                       profile={profile}
-                       isOwner={isOwner}
-                       followingInProgress={followingInProgress}
-                       follow={follow}
-                       unfollow={unfollow}
-                       followed={followed}
+        <ProfileAvatar
+          onMainPhotoSelected={onMainPhotoSelected}
+          profile={profile}
+          isOwner={isOwner}
+          followingInProgress={followingInProgress}
+          follow={follow}
+          unfollow={unfollow}
+          followed={followed}
         />
         <div className={style.userDescription}>
           <p className={style.nikName}>{profile?.fullName}</p>
-          <ProfileStatusWithHooks status={status}
-                                  updateStatus={updateStatus}
-                                  isOwner={isOwner}
+          <ProfileStatusWithHooks
+            status={status}
+            updateStatus={updateStatus}
+            isOwner={isOwner}
           />
 
           {editMode
-            ? <ProfileData activateEditMode={activateEditMode}
-                           profile={profile}
-                           isOwner={isOwner}
+            ? <ProfileData
+              activateEditMode={activateEditMode}
+              profile={profile}
+              isOwner={isOwner}
             />
             // : <ProfileForm onSubmit={deActivateEditMode}/>
-            : <ProfileReduxForm profile={profile}
-                                initialValues={profile}
-                                onSubmit={deActivateEditMode as any}
+            : <ProfileReduxForm
+              profile={profile}
+              initialValues={profile}
+              onSubmit={deActivateEditMode as any}
             />
           }
         </div>
